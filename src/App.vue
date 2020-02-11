@@ -1,14 +1,27 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <span v-for="(router,key) in routers" :key="key">
+        <span v-if="key!==0"> | </span>
+        <router-link :to="router.path">{{router.name}}</router-link>
+      </span>
     </div>
-    <router-view/>
+    <router-view />
   </div>
 </template>
 
-<style>
+<script>
+export default {
+  computed: {
+    routers() {
+      //所有路由
+      return this.$router.options.routes;
+    }
+  }
+};
+</script>
+
+<style scoped>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
