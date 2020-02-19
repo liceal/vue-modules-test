@@ -36,6 +36,20 @@ const routes = [{
         name: "Marked+highlight",
         component: () =>
             import ('../views/marked_and_highlight')
+    },
+    {
+        //socket 长连接
+        path: "/socket",
+        name: "socket",
+        component: () =>
+            import ('../views/socket')
+    },
+    {
+        //瀑布流
+        path: '/water_fall',
+        name: "WaterFall",
+        component: () =>
+            import ('../views/vue-waterfall-easy')
     }
 ]
 

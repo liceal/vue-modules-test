@@ -4,7 +4,7 @@
     <p v-html="html"></p>
     <hr />
     
-    <textarea name id cols="30" rows="10" v-model="code"></textarea>
+    <textarea name id cols="30" rows="10" v-model="code" style="margin:auto"></textarea>
     <p v-html="hljsCode"></p>
     <hr />
 
