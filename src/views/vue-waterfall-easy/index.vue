@@ -29,7 +29,7 @@ export default {
         { src: "./img/1.jpg", href: "#" },
         { src: "./img/2.jpg", href: "#" },
         { src: "./img/3.jpg", href: "#" },
-        { src: "./img/4.jpg", href: "#" }
+        { src: require('@@/img/4.jpg'), href: "#" } //动态src
       ]
     };
   },
