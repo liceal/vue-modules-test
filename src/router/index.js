@@ -50,6 +50,20 @@ const routes = [{
         name: "WaterFall",
         component: () =>
             import ('../views/vue-waterfall-easy')
+    },
+    {
+        //bootstrap
+        path: '/bootstrap',
+        name: 'bootstrap',
+        component: () =>
+            import ('../views/bootstrap')
+    },
+    {
+        //swiper
+        path: '/swiper',
+        name: 'swiper',
+        component: () =>
+            import ('../views/swiper')
     }
 ]
 

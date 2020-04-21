@@ -7,14 +7,18 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
+    "bootstrap": "^3.4.1",
     "core-js": "^3.6.4",
     "highlight.js": "^9.18.1",
+    "jquery": "^3.4.1",
     "less": "^3.11.0",
     "less-loader": "^5.0.0",
     "marked": "^0.8.0",
     "mavon-editor": "^2.7.7",
     "papercss": "^1.6.1",
+    "swiper": "^5.3.7",
     "vue": "^2.6.11",
+    "vue-awesome-swiper": "^4.1.0",
     "vue-particles": "^1.0.9",
     "vue-router": "^3.1.5",
     "vue-socket.io": "^3.0.7",
