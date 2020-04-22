@@ -16,7 +16,6 @@ export default {
   },
   components: {
     container
-    // swiper1:()=>import('./swiper1')
   },
   mounted() {
     this._FILES();
