@@ -1,7 +1,7 @@
 <template>
   <div>
-    <button @click="send">请求fetch</button>
-    <button @click="socket">请求socket</button>
+    <button @click="send">请求fetch(测试普通get接口)</button>
+    <button @click="socket">请求socket(测试socket常连接)</button>
   </div>
 </template>
 

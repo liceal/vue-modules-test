@@ -30,16 +30,21 @@ export default {
        * src 下的 @/指定文件夹
        * 是否 包含子目录 中的文件
        * 匹配文件 正则表达式
+       * /\.\/swiper.*\/.*\.vue/
+       * /\.\/.*\/.*\.vue$/
        * @return Array
        */
       const files = require.context(
         "@/views/swiper",
         true,
-        /\.\/swiper.*\/.*\.vue/
+        /\.\/.*\/.*\.vue$/
       ); //找swiper文件夹
       let i = 0;
       files.keys().forEach(element => {
-        const fileName = element.match(/swiper\d{1,2}/)[0];
+        /**
+         * /swiper\d{1,2}/
+         */
+        const fileName = element.match(/\.\/(.*)\//)[1];
         this.requireComponent.push(fileName);
         this.$options.components[fileName] = () => import("./" + fileName);
       });
