@@ -7,8 +7,8 @@ function resolve(dir) {
 }
 
 module.exports = {
-    outputDir: process.env.outputDir,
-    assetsDir: 'static',
+    outputDir: process.env.outputDir, //输出地址
+    assetsDir: 'static', //静态资源文件
     publicPath: '/',
     devServer: {
         disableHostCheck: true,
@@ -30,11 +30,11 @@ module.exports = {
                 },
                 logLevel: 'debug'
             },
-            '/socket.io': {
-                target: 'http://server.test', // target host
-                changeOrigin: true, // needed for virtual hosted sites
-                logLevel: 'debug'
-            }
+            // '/socket.io': {
+            //     target: 'http://server.test', // target host
+            //     changeOrigin: true, // needed for virtual hosted sites
+            //     logLevel: 'debug'
+            // }
         }
     },
     chainWebpack: config => {

@@ -16,7 +16,7 @@ import VueSocketIO from "vue-socket.io";
 export default {
   data() {
     return {
-      url: "http://server.test/api"
+      url: "ws://localhost:666"
     };
   },
   methods: {
@@ -32,7 +32,7 @@ export default {
     socket() {
       let socket = new VueSocketIO({
         debug: true,
-        connection: this.url
+        connection: this.url,
       });
       //   debugger
       //   socket.io.connect()
