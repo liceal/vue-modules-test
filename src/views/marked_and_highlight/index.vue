@@ -10,6 +10,9 @@
 
     <p v-html="phpCode"></p>
 
+    <hr>
+
+    <pre v-html="hljsCssCode" />
   </div>
 </template>
 
@@ -48,7 +51,12 @@ export default {
 
 $val = "hello world";
 echo $this->$val;
-`
+`,
+      cssCode:`
+.main {
+  color: red;
+}
+      `
     };
   },
   created() {
@@ -79,6 +87,11 @@ echo $this->$val;
     code(val) {
       this.hljsCode = hljs.highlightAuto(val).value;
     }
-  }
+  },
+  computed: {
+    hljsCssCode(){
+      return hljs.highlight("css",this.cssCode).value
+    }
+  },
 };
 </script>
