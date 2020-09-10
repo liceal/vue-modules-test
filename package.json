@@ -20,6 +20,7 @@
     "nodejs-websocket": "^1.7.2",
     "papercss": "^1.6.1",
     "swiper": "^5.3.7",
+    "v-contextmenu": "^2.9.0",
     "vue": "^2.6.11",
     "vue-awesome-swiper": "^4.1.0",
     "vue-particles": "^1.0.9",
