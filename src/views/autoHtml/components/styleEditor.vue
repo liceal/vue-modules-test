@@ -12,9 +12,14 @@ export default {
 	props:['code'],
 	computed: {
 		highlightedCode() {
-			return Prism.highlight(this.code,Prism.languages.css)
+			return Prism.highlight(this.code, Prism.languages.css)
 		},
-	}
+	},
+	methods: {
+		goBottom(){
+			this.$refs.container.scrollTop = 100000
+		}
+	},
 };
 </script>
 

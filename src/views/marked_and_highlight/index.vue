@@ -38,6 +38,9 @@ export default {
 
 > hello world
 
+你好啊
+---
+
 \`\`\`
 <span>Hello World!</span>
 \`\`\`

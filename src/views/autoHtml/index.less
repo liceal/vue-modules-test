@@ -1,38 +1,90 @@
 
-// .main{
-// 	transition:all .3s ease-in-out;
-// 		background-color: #002b36;
-// 		display: flex;
-// 		justify-content: center;
-// 		align-items: center;
-// }
-// .css-code{
-// 	border: 1px solid yellowgreen;
-// 	border-radius: 8px;
-// 	padding: 10px;
-// 	margin: 20px;
-// 	width: 30vw;
-// 	height: 80vh;
-// 	overflow:auto;
-// }
 
-// .css-code::-webkit-scrollbar {
-// 	display: none;
+// /* 全局加上过渡效果 */
+// *{
+// transition:.5s all cubic-bezier(0,1,0.95,1.05);
+// }
+// /* 界面有点单调，加一些颜色 */
+// .main{
+// background-color: #002b36;
+// display: flex;
+// align-items: center;
 // }
 
 // .css-code pre{
-// 	color:red;
-// 	font-size: 15px;
-// 	margin: 0px 20px;
+// color: white;
+// font-size: 1em;
+// margin: 0px 20px;
+// }
+
+// /* 代码高亮 */
+// .token.selector{ color: #93a1a1; }
+// .token.property{ color: #858d21; }
+// .token.punctuation{ color: #93a1a1; }
+// .token.function{ color: #2aa18f; }
+
+// .css-code{
+// border: 1px solid white;
+// border-radius: 8px;
+// margin: 20px;
+// width: 30vw;
+// height: 80vh;
+// overflow:auto;
+// }
+
+// .css-code::-webkit-scrollbar {
+// display: none;
+// }
+
+// /* 简历部分 */
+
+// .cv-code{
+// width: 30vw;
+// height: 80vh;
+// background-color: white;
+// margin: 20px;
+// overflow: auto;
+// border-radius: 10px;
+// padding: 0px 15px;
+// white-space: nowrap;
+// }
+
+// .cv-code::-webkit-scrollbar {
+// display: none;
+// }
+
+// .cv-code h1{
+// display: inline-block;
+// border-bottom: 1px solid black;
+// padding: 0px 5px;
+// margin: 10px 0px;
+// }
+
+// .cv-code ul{
+// margin: 0px;
+// padding: 0px 15px;
+// }
+
+// .cv-code li{
+// margin: 5px 0px;
+// }
+
+// .cv-code li code{
+// background-color: #f3f4f4;
+// padding: 1px 3px;
+// border-radius: 3px;
+// }
+
+
+// .css-code{
+// 	// box-shadow: 0px 0px 10px red,0px -10px 10px black,10px 0px 10px green,0px 10px 10px blue;
 // }
 
 // .cv-code{
-// 	width: 30vw;
-// 	height: 80vh;
-// 	background-color: white;
-// 	margin: 20px;
+//   box-shadow: 20px -20px 10px #ccc;
 // }
 
-
-
-
+// .cv-code:hover{
+//   box-shadow: 10px -10px 10px #ccc;
+//   transform: skew(5deg, 5deg) rotate(5deg) translateY(-10px);
+// }

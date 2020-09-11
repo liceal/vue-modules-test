@@ -1,74 +1,28 @@
 <template>
   <div class="main">
     <div class="style" v-html="codeInStyleTag" />
-    <StyleEditor class="css-code" :code="styleCode" />
-    <CvEditor class="cv-code" :code="cvCode"/>
+    <StyleEditor ref="StyleEditor" class="css-code" :code="styleCode" />
+    <CvEditor ref="CvEditor" class="cv-code" :code="cvCode" :isMarked="isMarked" />
   </div>
 </template>
 
 <script>
 import editor from "mavon-editor";
 import StyleEditor from "./components/styleEditor";
-import CvEditor from './components/styleEditor';
-const styleEdit = `
-*{
-  transition:all .5s;
-}
-.main{
-  background-color: #002b36;
-  display: flex;
-  align-items: center;
-}
+import CvEditor from "./components/cvEditor";
+import { cv, style1, style2, style3, style4,style5 } from "./code";
 
-.css-code{
-  border: 1px solid yellowgreen;
-  border-radius: 8px;
-  padding: 10px;
-  margin: 20px;
-  width: 30vw;
-  height: 80vh;
-  overflow:auto;
-}
-
-/* 代码高亮 */
-.token.selector{ color: rgb(133,153,0); }
-.token.property{ color: rgb(187,137,0); }
-.token.punctuation{ color: yellow; }
-.token.function{ color: rgb(42,161,152); }
-
-.css-code::-webkit-scrollbar {
-  display: none;
-}
-
-.css-code pre{
-  font-size: 15px;
-  margin: 0px 20px;
-}
-
-.cv-code{
-  width: 30vw;
-  height: 80vh;
-  background-color: white;
-  margin: 20px;
-}
-`;
-const cvEdit=`
-# 这是h1
-> 这里注解
-
-* 111
-* 222
-`
 export default {
   name: "autoHtml",
   components: {
     StyleEditor,
-    CvEditor
+    CvEditor,
   },
   data() {
     return {
       styleCode: "",
-      cvCode:""
+      cvCode: "",
+      isMarked: false,
     };
   },
   created() {
@@ -76,42 +30,52 @@ export default {
   },
   methods: {
     async renderEdit() {
-      await this.progressivelyShowStyle(50);
-      await this.progressivelyShowCV(100)
+      await this.progressivelyShow(style1, "styleCode", 30, "StyleEditor");
+      await this.progressivelyShow(style2, "styleCode", 30, "StyleEditor");
+      await this.progressivelyShow(cv, "cvCode", 20, "CvEditor");
+      await this.progressivelyShow(style3, "styleCode", 30, "StyleEditor");
+      await this.$nextTick(() => {
+        this.isMarked = true;
+      });
+      await this.progressivelyShow(style4, "styleCode", 30, "StyleEditor");
+      await this.progressivelyShow(style5, "styleCode", 30, "StyleEditor");
     },
-    progressivelyShowStyle(delay) {
+    /**
+     * TotalCode 总Code
+     * ShowCodeKey 实时渲染code
+     * Delay 渲染延迟
+     * DomName 渲染dom的ref名字
+     */
+    progressivelyShow(TotalCode, ShowCodeKey, Delay, DomName = "") {
       return new Promise((resolve, reject) => {
-        let styleCodeLength = styleEdit.length;
+        let CodeLength = TotalCode.length;
         let showNextCode = async (nextCodeIndex) => {
-          if (nextCodeIndex <= styleCodeLength) {
-            this.styleCode = styleEdit.substring(0, nextCodeIndex + 1);
-            // console.log(this.styleCode);
+          if (nextCodeIndex <= CodeLength) {
+            let nextCode = TotalCode[nextCodeIndex] ?? "";
+            if (nextCode === "\n" && this.$refs[DomName]) {
+              this.$nextTick(() => {
+                this.$refs[DomName].$el.scrollTop = 100000;
+              });
+            }
+            let DelayTime = {
+                "}\n": 100,
+                "*/": 500,
+              },
+              SpecialDelay =
+                DelayTime[
+                  TotalCode.substring(nextCodeIndex - 1, nextCodeIndex + 1)
+                ] ?? 0;
+            this[ShowCodeKey] += nextCode;
             setTimeout(() => {
               showNextCode(nextCodeIndex + 1);
-            }, delay);
+            }, Delay + SpecialDelay);
           } else {
-            resolve();
+            setTimeout(resolve, 500);
           }
         };
         showNextCode(0);
       });
     },
-    progressivelyShowCV(delay){
-      return new Promise((resolve, reject) => {
-        let cvCodeLength = cvEdit.length;
-        let showNextCode = async (nextCodeIndex) => {
-          if (nextCodeIndex <= cvCodeLength) {
-            this.cvCode = cvEdit.substring(0, nextCodeIndex + 1);
-            setTimeout(() => {
-              showNextCode(nextCodeIndex + 1);
-            }, delay);
-          } else {
-            resolve();
-          }
-        };
-        showNextCode(0);
-      });
-    }
   },
   computed: {
     codeInStyleTag() {
@@ -122,9 +86,8 @@ export default {
 </script>
 
 <style lang="less">
-
-@import url("./index.less");
-.main{
+// @import url("./index.less");
+.main {
   width: 100%;
   float: left;
   text-align: left;
