@@ -1,16 +1,30 @@
 <template>
   <div>
-    {{value}}
+    <textarea
+      name
+      id
+      cols="30"
+      rows="10"
+      v-model="value"
+      style="margin: auto"
+    ></textarea>
     <p v-html="html"></p>
     <hr />
-    
-    <textarea name id cols="30" rows="10" v-model="code" style="margin:auto"></textarea>
+
+    <textarea
+      name
+      id
+      cols="30"
+      rows="10"
+      v-model="code"
+      style="margin: auto"
+    ></textarea>
     <p v-html="hljsCode"></p>
     <hr />
 
     <p v-html="phpCode"></p>
 
-    <hr>
+    <hr />
 
     <pre v-html="hljsCssCode" />
   </div>
@@ -20,6 +34,7 @@
 /**
  * https://github.com/markedjs/marked
  * marked 将markdown代码转成html解析 转成html代码
+ *  option文档: https://codemirror.net/doc/manual.html
  *
  * https://github.com/highlightjs/highlight.js
  * hljs 代码高亮
@@ -55,11 +70,11 @@ export default {
 $val = "hello world";
 echo $this->$val;
 `,
-      cssCode:`
+      cssCode: `
 .main {
   color: red;
 }
-      `
+      `,
     };
   },
   created() {
@@ -69,7 +84,7 @@ echo $this->$val;
     //marked解析设置
     marked.setOptions({
       renderer: new marked.Renderer(),
-      highlight: function(code) {
+      highlight: function (code) {
         return hljs.highlightAuto(code).value;
       },
       pedantic: false,
@@ -78,7 +93,7 @@ echo $this->$val;
       sanitize: false,
       smartLists: true,
       smartypants: false,
-      xhtml: false
+      xhtml: false,
     });
     this.html = marked(this.value);
 
@@ -87,14 +102,30 @@ echo $this->$val;
     this.phpCode = hljs.highlight("php", this.phpCode).value;
   },
   watch: {
+    value(val) {
+      marked.setOptions({
+        renderer: new marked.Renderer(),
+        highlight: function (code) {
+          return hljs.highlightAuto(code).value;
+        },
+        pedantic: false,
+        gfm: true,
+        breaks: false,
+        sanitize: false,
+        smartLists: true,
+        smartypants: false,
+        xhtml: false,
+      });
+      this.html = marked(val);
+    },
     code(val) {
       this.hljsCode = hljs.highlightAuto(val).value;
-    }
+    },
   },
   computed: {
-    hljsCssCode(){
-      return hljs.highlight("css",this.cssCode).value
-    }
+    hljsCssCode() {
+      return hljs.highlight("css", this.cssCode).value;
+    },
   },
 };
 </script>
