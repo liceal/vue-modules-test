@@ -7,6 +7,11 @@
       row-key="name"
       style="width: 100%">
         <el-table-column
+          label="操作"
+          width="100px">
+          <span style="cursor: pointer;" class="handle">按我拖拽</span>
+        </el-table-column>
+        <el-table-column
           prop="date"
           label="日期"
           width="180">
@@ -58,6 +63,7 @@ export default {
       console.log(els);
       Sortable.create(els,{
         animation:150,
+        handle:'.handle',
         onEnd:(e)=>{
           // 拖拽更新数据
           this.$nextTick(()=>{
@@ -72,5 +78,4 @@ export default {
 </script>
 
 <style>
-
 </style>
