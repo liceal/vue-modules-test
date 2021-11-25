@@ -9,7 +9,7 @@ function resolve(dir) {
 module.exports = {
     outputDir: process.env.outputDir, //输出地址
     assetsDir: 'static', //静态资源文件
-    publicPath: '/',
+    publicPath: process.env.NODE_ENV === 'production' ? './' : '/',
     devServer: {
         disableHostCheck: true,
         open: false,
