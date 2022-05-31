@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div style="fontAlign:center">{{title}}</div>
+    <div style="fontAlign:center">{{ title }}</div>
     <vue-waterfall-easy
       @click="clickFn"
       style="height:100vh;"
@@ -9,8 +9,8 @@
       :enablePullDownEvent="true"
     >
       <div slot-scope="props">
-        <p>第{{props.index+1}}张图片</p>
-        <p>{{props.value.src}}</p>
+        <p>第{{ props.index + 1 }}张图片</p>
+        <p>{{ props.value.src }}</p>
       </div>
     </vue-waterfall-easy>
   </div>
@@ -29,12 +29,43 @@ export default {
         { src: "./img/1.jpg", href: "#" },
         { src: "./img/2.jpg", href: "#" },
         { src: "./img/3.jpg", href: "#" },
-        { src: require('@@/img/4.jpg'), href: "#" } //动态src
-      ]
+        { src: require("@@/img/4.jpg"), href: "#" }, //动态src
+        { src: "./img/1.jpg", href: "#" },
+        { src: "./img/2.jpg", href: "#" },
+        { src: "./img/3.jpg", href: "#" },
+        { src: require("@@/img/4.jpg"), href: "#" }, //动态src{ src: "./img/1.jpg", href: "#" },
+        { src: "./img/2.jpg", href: "#" },
+        { src: "./img/3.jpg", href: "#" },
+        { src: require("@@/img/4.jpg"), href: "#" }, //动态src{ src: "./img/1.jpg", href: "#" },
+        { src: "./img/2.jpg", href: "#" },
+        { src: "./img/3.jpg", href: "#" },
+        { src: require("@@/img/4.jpg"), href: "#" }, //动态src{ src: "./img/1.jpg", href: "#" },
+        { src: "./img/2.jpg", href: "#" },
+        { src: "./img/3.jpg", href: "#" },
+        { src: require("@@/img/4.jpg"), href: "#" }, //动态src{ src: "./img/1.jpg", href: "#" },
+        { src: "./img/2.jpg", href: "#" },
+        { src: "./img/3.jpg", href: "#" },
+        { src: require("@@/img/4.jpg"), href: "#" }, //动态src{ src: "./img/1.jpg", href: "#" },
+        { src: "./img/2.jpg", href: "#" },
+        { src: "./img/3.jpg", href: "#" },
+        { src: require("@@/img/4.jpg"), href: "#" }, //动态src{ src: "./img/1.jpg", href: "#" },
+        { src: "./img/2.jpg", href: "#" },
+        { src: "./img/3.jpg", href: "#" },
+        { src: require("@@/img/4.jpg"), href: "#" }, //动态src{ src: "./img/1.jpg", href: "#" },
+        { src: "./img/2.jpg", href: "#" },
+        { src: "./img/3.jpg", href: "#" },
+        { src: require("@@/img/4.jpg"), href: "#" }, //动态src{ src: "./img/1.jpg", href: "#" },
+        { src: "./img/2.jpg", href: "#" },
+        { src: "./img/3.jpg", href: "#" },
+        { src: require("@@/img/4.jpg"), href: "#" }, //动态src{ src: "./img/1.jpg", href: "#" },
+        { src: "./img/2.jpg", href: "#" },
+        { src: "./img/3.jpg", href: "#" },
+        { src: require("@@/img/4.jpg"), href: "#" }, //动态src
+      ],
     };
   },
   components: {
-    vueWaterfallEasy
+    vueWaterfallEasy,
   },
   methods: {
     getData() {
@@ -49,7 +80,7 @@ export default {
     clickFn(event, { index, value }) {
       console.log(event, index, value);
       event.preventDefault(); //阻止冒泡
-    }
-  }
+    },
+  },
 };
 </script>
