@@ -11,12 +11,6 @@ module.exports = {
     assetsDir: 'static', //静态资源文件
     publicPath: process.env.NODE_ENV === 'production' ? './' : '/',
     devServer: {
-        disableHostCheck: true,
-        open: false,
-        host: 'localhost',
-        port: 8001,
-        https: false,
-        hotOnly: false,
         //配置代理
         proxy: {
             //以'/api'开头的接口会转接到下面的target的ip
